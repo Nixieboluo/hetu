@@ -18,12 +18,12 @@ const nextConfig = {
 	output: 'standalone',
 
 	// Type checking and linting should be in individual tasks.
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
-	typescript: {
-		ignoreBuildErrors: true,
-	},
+	// eslint: {
+	// 	ignoreDuringBuilds: true,
+	// },
+	// typescript: {
+	// 	ignoreBuildErrors: true,
+	// },
 };
 
 export default nextConfig;
