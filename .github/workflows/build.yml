@@ -122,6 +122,6 @@ jobs:
               with:
                   push: true
                   file: hetu/Dockerfile.package-web
-                  context: backend-${{ runner.os }}-${{ runner.arch }}
+                  context: web-${{ runner.os }}-${{ runner.arch }}
                   tags: ${{ steps.meta-web.outputs.tags }}
                   labels: ${{ steps.meta-web.outputs.labels }}
