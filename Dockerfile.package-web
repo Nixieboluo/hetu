@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . .
 
+RUN ls -laR
 RUN mv ./public ./.next/standalone/apps/web
 RUN mv ./.next/static ./.next/standalone/apps/web/.next
 
