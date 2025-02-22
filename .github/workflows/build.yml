@@ -65,6 +65,9 @@ jobs:
                       Dockerfile.release
                   sparse-checkout-cone-mode: false
 
+            - name: Display structure of downloaded files
+              run: ls -R
+
             - name: Copy Dockerfile
               run: cp hetu/Dockerfile.release Dockerfile
 
