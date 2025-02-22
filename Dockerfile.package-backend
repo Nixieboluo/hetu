@@ -2,6 +2,6 @@ FROM oven/bun:1 AS build
 
 WORKDIR /app
 
-COPY build/apps/backend/dist/. .
+COPY . .
 
 CMD ["bun run index.js"]

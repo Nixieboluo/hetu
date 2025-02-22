@@ -65,24 +65,20 @@ jobs:
                       Dockerfile.*
                   sparse-checkout-cone-mode: false
 
-            - name: Display structure of downloaded files
-              run: ls -R
-
-            - name: Copy Dockerfile
-              run: cp hetu/Dockerfile.package-backend Dockerfile
-
             - name: Download artifacts
               uses: actions/download-artifact@v4
+              with:
+                  pattern: '*-${{ runner.os }}-${{ runner.arch }}'
 
             - name: Display structure of downloaded files
               run: ls -R
 
             - name: Docker meta
-              id: meta
+              id: meta-backend
               uses: docker/metadata-action@v5
               with:
                   images: |
-                      ghcr.io/miracle-box/hetu
+                      ghcr.io/${{ github.repository_owner }}/hetu-backend
                   # generate Docker tags based on the following events/attributes
                   tags: |
                       type=ref,event=branch
@@ -98,8 +94,10 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Build and push
+            - name: Build backend and push
               uses: docker/build-push-action@v6
               with:
-                  tags: ${{ steps.meta.outputs.tags }}
-                  labels: ${{ steps.meta.outputs.labels }}
+                  file: hetu/Dockerfile.package-backend
+                  context: backend-${{ runner.os }}-${{ runner.arch }}
+                  tags: ${{ steps.meta-backend.outputs.tags }}
+                  labels: ${{ steps.meta-backend.outputs.labels }}
