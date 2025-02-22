@@ -7,4 +7,4 @@ COPY . .
 RUN mv ./public ./.next/standalone/apps/web
 RUN mv ./.next/static ./.next/standalone/apps/web/.next
 
-CMD ["bun", "run", "standalone/apps/web/server.js"]
+CMD ["bun", "run", ".next/standalone/apps/web/server.js"]
